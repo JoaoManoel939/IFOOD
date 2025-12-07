@@ -6,15 +6,3 @@ public abstract class Usuario {
     }
     public String getNome() { return nome; }
 }
-
-public class DonoRestaurante extends Usuario {
-    public DonoRestaurante(String nome) {
-        super(nome);
-    }
-}
-
-public class Cliente extends Usuario {
-    public Cliente(String nome) {
-        super(nome);
-    }
-}
