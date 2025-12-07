@@ -1,0 +1,15 @@
+ublic class Bebida extends Produto {
+    private int tamanhoMl;
+    private boolean alcoolica;
+
+    public Bebida(String nome, String descricao, double preco, int tempo, int tamanhoMl, boolean alcoolica) {
+        super(nome, descricao, preco, tempo);
+        this.tamanhoMl = tamanhoMl;
+        this.alcoolica = alcoolica;
+    }
+
+    @Override
+    public String getDetalhes() {
+        return tamanhoMl + "ml" + (alcoolica ? " | Alcoólica" : " | Não Alcoólica");
+    }
+}
