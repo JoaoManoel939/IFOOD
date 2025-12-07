@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Restaurante {
+    private String nome;
+    private String endereco;
+    private List<Produto> cardapio; // Agregação de Produtos
+
+    public Restaurante(String nome, String endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.cardapio = new ArrayList<>();
+    }
+
+    public void adicionarProduto(Produto p) {
+        cardapio.add(p);
+    }
+    
+    public void removerProduto(Produto p) {
+        cardapio.remove(p);
+    }
+
+    public List<Produto> getCardapio() { return cardapio; }
+    public String getNome() { return nome; }
+    
+    @Override
+    public String toString() { return nome; }
+}
