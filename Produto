@@ -1,0 +1,25 @@
+public abstract class Produto {
+    private String nome;
+    private String descricao;
+    private double preco;
+    private int tempoPreparoMinutos;
+
+    public Produto(String nome, String descricao, double preco, int tempoPreparoMinutos) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.tempoPreparoMinutos = tempoPreparoMinutos;
+    }
+
+    // Getters e Setters
+    public String getNome() { return nome; }
+    public double getPreco() { return preco; }
+    public int getTempoPreparoMinutos() { return tempoPreparoMinutos; }
+    
+    @Override
+    public String toString() {
+        return nome + " - R$ " + String.format("%.2f", preco);
+    }
+    
+    public abstract String getDetalhes(); // Método polimórfico para exibir detalhes específicos
+}
