@@ -1,0 +1,44 @@
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class App extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Menu simples para escolher qual interface abrir
+        Button btnDono = new Button("Entrar como Dono");
+        Button btnCliente = new Button("Entrar como Cliente");
+
+        btnDono.setOnAction(e -> abrirTela("dono_view.fxml", "Área do Dono"));
+        btnCliente.setOnAction(e -> abrirTela("cliente_view.fxml", "Área do Cliente"));
+
+        VBox root = new VBox(10, btnDono, btnCliente);
+        root.setStyle("-fx-padding: 50; -fx-alignment: center;");
+
+        Scene scene = new Scene(root, 300, 200);
+        primaryStage.setTitle("Sistema de Restaurante");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void abrirTela(String fxml, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle(titulo);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
