@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox spacing="20" xmlns:fx="http://javafx.com/fxml" fx:controller="ClienteController" style="-fx-padding: 20;">
+    <VBox spacing="10" HBox.hgrow="ALWAYS">
+        <Label text="Restaurantes Disponíveis" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="cbRestaurantes" promptText="Selecione um restaurante" maxWidth="Infinity" onAction="#handleSelecionarRestaurante"/>
+        
+        <Label text="Cardápio"/>
+        <ListView fx:id="listaCardapio" VBox.vgrow="ALWAYS"/>
+        <Button text="Adicionar ao Pedido ->" onAction="#handleAdicionarAoPedido" maxWidth="Infinity"/>
+    </VBox>
+    
+    <VBox spacing="10" HBox.hgrow="ALWAYS">
+        <Label text="Seu Pedido" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="listaPedido" VBox.vgrow="ALWAYS"/>
+        
+        <GridPane hgap="10" vgap="5">
+            <Label text="Total (R$):" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTotal" text="0.00" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <Label text="Tempo Estimado:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTempo" text="0 min" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+        
+        <Button text="Finalizar Pedido" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" maxWidth="Infinity" onAction="#handleFinalizar"/>
+    </VBox>
+</HBox>
