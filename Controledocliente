@@ -1,0 +1,60 @@
+
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+
+public class ClienteController {
+    @FXML private ComboBox<Restaurante> cbRestaurantes;
+    @FXML private ListView<Produto> listaCardapio;
+    @FXML private ListView<Produto> listaPedido;
+    @FXML private Label lblTotal, lblTempo;
+
+    private Pedido pedidoAtual;
+    private Cliente clienteLogado; // Simplificação
+
+    @FXML
+    public void initialize() {
+        // Carrega restaurantes do "banco"
+        cbRestaurantes.getItems().setAll(BancoDeDados.getInstance().getRestaurantes());
+        clienteLogado = new Cliente("Cliente Teste");
+        pedidoAtual = new Pedido(clienteLogado);
+    }
+
+    @FXML
+    public void handleSelecionarRestaurante() {
+        Restaurante r = cbRestaurantes.getValue();
+        if (r != null) {
+            listaCardapio.getItems().setAll(r.getCardapio());
+            // Novo restaurante, novo pedido (regra de negócio simples)
+            pedidoAtual = new Pedido(clienteLogado);
+            atualizarResumo();
+        }
+    }
+
+    @FXML
+    public void handleAdicionarAoPedido() {
+        Produto p = listaCardapio.getSelectionModel().getSelectedItem();
+        if (p != null) {
+            pedidoAtual.adicionarItem(p);
+            listaPedido.getItems().add(p);
+            atualizarResumo();
+        }
+    }
+
+    private void atualizarResumo() {
+        lblTotal.setText(String.format("%.2f", pedidoAtual.calcularTotal()));
+        lblTempo.setText(pedidoAtual.calcularTempoEspera() + " min");
+    }
+
+    @FXML
+    public void handleFinalizar() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Pedido Finalizado");
+        alert.setHeaderText("Obrigado, " + clienteLogado.getNome());
+        alert.setContentText("Total: R$ " + lblTotal.getText() + "\nTempo estimado: " + lblTempo.getText());
+        alert.showAndWait();
+        
+        listaPedido.getItems().clear();
+        pedidoAtual = new Pedido(clienteLogado);
+        atualizarResumo();
+    }
+}
