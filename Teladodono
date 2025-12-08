@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="DonoController" style="-fx-padding: 20;">
+    <Label text="Painel do Dono - Gerenciar Restaurante" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="10">
+        <TextField fx:id="txtNomeRestaurante" promptText="Nome do Restaurante"/>
+        <TextField fx:id="txtEndereco" promptText="Endereço"/>
+        <Button text="Criar/Selecionar Restaurante" onAction="#handleCriarRestaurante"/>
+    </HBox>
+    <Separator/>
+    
+    <Label text="Novo Produto"/>
+    <GridPane hgap="10" vgap="10">
+        <TextField fx:id="txtNomeProd" promptText="Nome Produto" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtDescProd" promptText="Descrição" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <TextField fx:id="txtPreco" promptText="Preço (0.00)" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtTempo" promptText="Tempo (min)" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <RadioButton fx:id="rbComida" text="Comida" selected="true"/>
+            <RadioButton fx:id="rbBebida" text="Bebida"/>
+        </HBox>
+        
+        <TextField fx:id="txtExtra1" promptText="Tipo Cozinha / Tamanho(ml)" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="chkVeg" text="Vegetariano / Alcoólica" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        
+        <Button text="Adicionar Produto" onAction="#handleAdicionarProduto" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    </GridPane>
+    
+    <Separator/>
+    <Label text="Cardápio Atual"/>
+    <ListView fx:id="listaProdutos" VBox.vgrow="ALWAYS"/>
+    <Button text="Remover Selecionado" onAction="#handleRemoverProduto"/>
+</VBox>
