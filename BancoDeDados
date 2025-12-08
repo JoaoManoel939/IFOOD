@@ -1,0 +1,32 @@
+// --- Arquivo: BancoDeDados.java ---
+import java.util.ArrayList;
+import java.util.List;
+
+public class BancoDeDados {
+    private static BancoDeDados instance;
+    private List<Restaurante> restaurantes;
+
+    private BancoDeDados() {
+        restaurantes = new ArrayList<>();
+        // Adicionando um restaurante de teste
+        Restaurante r1 = new Restaurante("Bistrô Java", "Rua dos Bits, 101");
+        r1.adicionarProduto(new Comida("Macarrão", "Massa fresca", 25.00, 20, "Italiana", true, false));
+        r1.adicionarProduto(new Bebida("Suco", "Laranja", 8.00, 5, 500, false));
+        restaurantes.add(r1);
+    }
+
+    public static BancoDeDados getInstance() {
+        if (instance == null) instance = new BancoDeDados();
+        return instance;
+    }
+
+    public List<Restaurante> getRestaurantes() {
+        return restaurantes;
+    }
+    
+    public void salvarRestaurante(Restaurante r) {
+        if(!restaurantes.contains(r)) {
+            restaurantes.add(r);
+        }
+    }
+}
