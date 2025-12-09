@@ -17,8 +17,7 @@ public class DonoController {
         grupoTipo = new ToggleGroup();
         rbComida.setToggleGroup(grupoTipo);
         rbBebida.setToggleGroup(grupoTipo);
-        
-        // Lógica simples para alternar dicas de texto
+    
         rbComida.setOnAction(e -> {
             txtExtra1.setPromptText("Tipo de Cozinha");
             chkVeg.setText("Vegetariano");
@@ -33,7 +32,6 @@ public class DonoController {
     public void handleCriarRestaurante() {
         String nome = txtNomeRestaurante.getText();
         String end = txtEndereco.getText();
-        // Cria ou recupera (simplificado: sempre cria novo para demo)
         restauranteAtual = new Restaurante(nome, end);
         BancoDeDados.getInstance().salvarRestaurante(restauranteAtual);
         atualizarLista();
