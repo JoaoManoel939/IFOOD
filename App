@@ -10,7 +10,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Menu simples para escolher qual interface abrir
         Button btnDono = new Button("Entrar como Dono");
         Button btnCliente = new Button("Entrar como Cliente");
 
