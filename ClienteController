@@ -13,7 +13,6 @@ public class ClienteController {
 
     @FXML
     public void initialize() {
-        // Carrega restaurantes do "banco"
         cbRestaurantes.getItems().setAll(BancoDeDados.getInstance().getRestaurantes());
         clienteLogado = new Cliente("Cliente Teste");
         pedidoAtual = new Pedido(clienteLogado);
