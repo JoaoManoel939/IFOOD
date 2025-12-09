@@ -19,7 +19,6 @@ public class Pedido {
     }
 
     public int calcularTempoEspera() {
-        // Simplificação: Soma o tempo de preparo de todos os itens
         return itens.stream().mapToInt(Produto::getTempoPreparoMinutos).sum();
     }
 }
